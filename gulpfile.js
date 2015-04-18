@@ -29,7 +29,7 @@ gulp.task('browserify', function() {
       console.log('Updating!');
       watcher.bundle()
         .on('error', swallowError)
-        .pipe(source('application.coffee'))
+        .pipe(source('application.js'))
         .pipe(gulp.dest('./build/assets/js'));
       console.log('Updated!', (Date.now() - updateStart) + 'ms');
     })

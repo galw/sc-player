@@ -2,22 +2,32 @@
 
   "use strict"
 
-  var React  = require("react")
+  var React  = require("react"),
+      tracks = require("services/tracks"),
+      Player = require("./Player"),
+      util   = require("util/util")
 
   var Frame = React.createClass({
 
-    // getInitialState: function() {
-    //   // wait
-    // },
+    getInitialState: function() {
+      return {
+        track: {}
+      }
+    },
 
-    // componentDidMount: function() {
-    //   // wait
-    // },
+    componentDidMount: function() {
+      (function(_this) {
+        tracks.get().then(function (tracks) {
+          var index   = util.random(0, tracks.length-1);
+          _this.setState({track: tracks[index]})
+        })
+      })(this)
+    },
 
     render: function() {
       return (
-        <div>hello</div>
-      )
+        <Player track={this.state.track}></Player>
+      );
     }
 
   });

@@ -2,7 +2,7 @@ config = require("config/api")
 
 class Tracks
 
-  @get:(q)->
+  @get:(q = {})->
     q.limit = 200
     q.type  = "public"
     q.bpm   = { from: q.bpm, to: q.bpm }

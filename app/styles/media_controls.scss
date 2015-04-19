@@ -1,0 +1,24 @@
+.media-controls {
+  background-image: url('/assets/images/media-controls-sprite.png');
+  background-repeat: no-repeat;
+  &.play {
+    background-position: 0 0;
+    width: 30px;
+    height: 47px;
+  }
+  &.back {
+    background-position: -36px -2px;
+    width: 42px;
+    height: 44px;
+  }
+  &.forward {
+    background-position: -92px -2px;
+    width: 42px;
+    height: 44px;
+  }
+  &.pause {
+    background-position: -140px -4px;
+    width: 23px;
+    height: 41px;
+  }
+}

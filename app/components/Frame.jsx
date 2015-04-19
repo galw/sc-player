@@ -11,13 +11,19 @@
 
     getInitialState: function() {
       return {
-        track: {}
+        track: {
+          title: "",
+          user: {
+            username: ""
+          }
+        }
       }
     },
 
-    componentDidMount: function() {
+    getRandomTrack: function(e) {
+      e.preventDefault();
       (function(_this) {
-        tracks.get().then(function (tracks) {
+        tracks.get({tags: "happy, piano"}).then(function (tracks) {
           var index   = util.random(0, tracks.length-1);
           _this.setState({track: tracks[index]})
         })
@@ -26,7 +32,13 @@
 
     render: function() {
       return (
-        <Player track={this.state.track}></Player>
+        <div id="frame">
+          <div id="header"></div>
+          <div id="content">
+            <a href="" onClick={this.getRandomTrack}>Pick Random Song</a>
+          </div>
+          <Player id="footer" track={this.state.track}></Player>
+        </div>
       );
     }
 
@@ -34,7 +46,7 @@
 
   React.render(
     <Frame/>,
-    document.getElementById('frame')
+    document.body
   );
 
   module.exports = Frame;

@@ -46,8 +46,8 @@ gulp.task('watch', function() {
 gulp.task('sass', function() {
   gulp.src('./app/styles/application.scss')
     .pipe(sass())
-    .pipe(minifycss())
     .on('error', swallowError)
+    .pipe(minifycss())
     .pipe(gulp.dest('./build/assets/styles/'));
 });
 
